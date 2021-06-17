@@ -4,7 +4,8 @@
   "description": "A bot for local artists to share their music",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jsstrn/subhas-music-bot/issues"
   },
-  "homepage": "https://github.com/jsstrn/subhas-music-bot#readme"
+  "homepage": "https://github.com/jsstrn/subhas-music-bot#readme",
+  "devDependencies": {
+    "jest": "^27.0.4"
+  }
 }
