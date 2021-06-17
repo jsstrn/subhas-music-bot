@@ -1,0 +1,19 @@
+{
+  "name": "subhas-music-bot",
+  "version": "1.0.0",
+  "description": "A bot for local artists to share their music",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsstrn/subhas-music-bot.git"
+  },
+  "author": "Jesstern Rays <jsstrn@users.noreply.github.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsstrn/subhas-music-bot/issues"
+  },
+  "homepage": "https://github.com/jsstrn/subhas-music-bot#readme"
+}
