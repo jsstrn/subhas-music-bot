@@ -8,6 +8,10 @@ orbs:
 jobs:
   deploy:
     executor: serverless/default
+    parameters:
+      stage:
+        type: string
+        default: dev
     steps:
       - checkout
       - aws-cli/setup
