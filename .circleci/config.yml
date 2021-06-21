@@ -19,13 +19,14 @@ jobs:
           org-name: jsstrn
           app-name: subhas-music-bot
       - run:
-          name: Deploy application to development environment
+          name: Deploy application to << parameters.stage >> environment
           command: npm run "deploy:<< parameters.stage >>"
 
 workflows:
   deployment:
     jobs:
       - node/test:
+          name: unit-tests
           version: "14.17"
       
       - deploy:
@@ -35,7 +36,7 @@ workflows:
             - aws-credentials
             - serverless-credentials
           requires:
-            - node/test
+            - unit-tests
       
       - deploy:
           name: deploy-stage
