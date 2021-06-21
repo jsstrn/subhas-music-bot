@@ -6,7 +6,7 @@ describe("Handler", () => {
     expect(await hello()).toEqual({
       statusCode: 200,
       body: JSON.stringify({
-        message: "Your function executed successfully!",
+        message: "Your function was deployed via CI/CD and executed successfully!",
       }),
     });
   });
