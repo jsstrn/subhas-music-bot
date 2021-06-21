@@ -24,5 +24,8 @@ workflows:
       - node/test:
           version: "14.17"
       - deploy-app:
+          context:
+            - aws-credentials
+            - serverless-credentials
           requires:
             - node/test
