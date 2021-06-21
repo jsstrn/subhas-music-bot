@@ -28,7 +28,7 @@ workflows:
       - node/test:
           name: unit-tests
           version: "14.17"
-      
+
       - deploy:
           name: deploy-dev
           stage: dev
@@ -37,23 +37,33 @@ workflows:
             - serverless-credentials
           requires:
             - unit-tests
-      
+
+      - approve-deploy-stage:
+          name: approve-deploy-stage
+          type: approval
+          requires:
+            - deploy-dev
+
       - deploy:
           name: deploy-stage
           stage: stage
-          type: approval
           context:
             - aws-credentials
             - serverless-credentials
           requires:
-            - deploy-dev
-      
+            - approve-deploy-stage
+
+      - approve-deploy-prod:
+          name: approve-deploy-prod
+          type: approval
+          requires:
+            - deploy-stage
+
       - deploy:
           name: deploy-prod
           stage: prod
-          type: approval
           context:
             - aws-credentials
             - serverless-credentials
           requires:
-            - deploy-stage
+            - approve-deploy-prod
