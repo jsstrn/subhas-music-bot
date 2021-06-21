@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "deploy:dev": "serverless deploy --stage dev --verbose"
   },
   "repository": {
     "type": "git",
