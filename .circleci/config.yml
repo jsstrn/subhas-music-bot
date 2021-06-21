@@ -29,6 +29,7 @@ workflows:
           version: "14.17"
       
       - deploy:
+          name: deploy-dev
           stage: dev
           context:
             - aws-credentials
@@ -37,19 +38,21 @@ workflows:
             - node/test
       
       - deploy:
+          name: deploy-stage
           stage: stage
           type: approval
           context:
             - aws-credentials
             - serverless-credentials
           requires:
-            - deploy
+            - deploy-dev
       
       - deploy:
+          name: deploy-prod
           stage: prod
           type: approval
           context:
             - aws-credentials
             - serverless-credentials
           requires:
-            - deploy
+            - deploy-stage
