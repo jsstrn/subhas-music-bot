@@ -22,4 +22,4 @@ workflows:
   deploy:
     jobs:
       - node/test:
-          version: 14.17
+          version: "14.17"
