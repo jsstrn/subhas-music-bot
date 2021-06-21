@@ -6,9 +6,10 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "deploy:dev": "serverless deploy --stage dev --verbose",
-    "deploy:stage": "serverless deploy --stage stage --verbose",
-    "deploy:prod": "serverless deploy --stage prod --verbose"
+    "deploy": "serverless deploy --verbose --stage $STAGE",
+    "deploy:dev": "STAGE=dev npm run deploy",
+    "deploy:stage": "STAGE=stage npm run deploy",
+    "deploy:prod": "STAGE=prod npm run deploy"
   },
   "repository": {
     "type": "git",
