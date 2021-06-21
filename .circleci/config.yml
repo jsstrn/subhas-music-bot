@@ -6,7 +6,7 @@ orbs:
   serverless-framework: circleci/serverless-framework@1.0.1
 
 jobs:
-  deploy-application:
+  deploy-app:
     executor: serverless/default
     steps:
       - checkout
@@ -23,3 +23,6 @@ workflows:
     jobs:
       - node/test:
           version: "14.17"
+      - deploy-app:
+          requires:
+            - node/test
