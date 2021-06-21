@@ -6,7 +6,7 @@ orbs:
   serverless: circleci/serverless-framework@1.0.1
 
 jobs:
-  deploy-app:
+  deploy:
     executor: serverless/default
     steps:
       - checkout
@@ -16,16 +16,36 @@ jobs:
           app-name: subhas-music-bot
       - run:
           name: Deploy application to development environment
-          command: npm run deploy:dev
+          command: npm run "deploy:<< parameters.stage >>"
 
 workflows:
-  deploy:
+  deployment:
     jobs:
       - node/test:
           version: "14.17"
-      - deploy-app:
+      
+      - deploy:
+          stage: dev
           context:
             - aws-credentials
             - serverless-credentials
           requires:
             - node/test
+      
+      - deploy:
+          stage: stage
+          type: approval
+          context:
+            - aws-credentials
+            - serverless-credentials
+          requires:
+            - deploy
+      
+      - deploy:
+          stage: prod
+          type: approval
+          context:
+            - aws-credentials
+            - serverless-credentials
+          requires:
+            - deploy
