@@ -15,6 +15,7 @@ jobs:
     steps:
       - checkout
       - aws-cli/setup
+      - node/install-packages
       - serverless/setup:
           org-name: jsstrn
           app-name: subhas-music-bot
