@@ -20,7 +20,7 @@ jobs:
           app-name: subhas-music-bot
       - run:
           name: Deploy application to << parameters.stage >> environment
-          command: npm run "deploy:<< parameters.stage >>"
+          command: npm run "deploy-to-<< parameters.stage >>"
 
 workflows:
   deployment:

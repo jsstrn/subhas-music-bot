@@ -17,3 +17,6 @@ functions:
       - http:
           path: hello
           method: get
+
+plugins:
+  - serverless-prune-plugin
