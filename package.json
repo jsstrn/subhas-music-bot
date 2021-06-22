@@ -6,17 +6,14 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    
     "_prune": "serverless prune --number 2 --stage $STAGE",
     "prune:dev": "STAGE=dev npm run _prune",
     "prune:stage": "STAGE=stage npm run _prune",
     "prune:prod": "STAGE=prod npm run _prune",
-    
     "_deploy": "serverless deploy --verbose --stage $STAGE",
     "deploy:dev": "STAGE=dev npm run _deploy",
     "deploy:stage": "STAGE=stage npm run _deploy",
     "deploy:prod": "STAGE=prod npm run _deploy",
-
     "deploy-to-dev": "npm run prune:dev && npm run deploy:dev",
     "deploy-to-stage": "npm run prune:stage && npm run deploy:stage",
     "deploy-to-prod": "npm run prune:prod && npm run deploy:prod"
@@ -32,7 +29,12 @@
   },
   "homepage": "https://github.com/jsstrn/subhas-music-bot#readme",
   "devDependencies": {
+    "@types/jest": "^26.0.23",
     "jest": "^27.0.4",
-    "serverless-prune-plugin": "^1.5.0"
+    "serverless-offline": "^7.0.0",
+    "serverless-plugin-typescript": "^1.1.9",
+    "serverless-prune-plugin": "^1.5.0",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.4"
   }
 }

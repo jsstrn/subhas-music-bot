@@ -16,7 +16,9 @@ functions:
     events:
       - http:
           path: hello
-          method: get
+          method: GET
 
 plugins:
   - serverless-prune-plugin
+  - serverless-plugin-typescript
+  - serverless-offline
