@@ -2,11 +2,11 @@
 
 A bot for local artists to share their music
 
-Please see [user story board](https://github.com/jsstrn/subhas-music-bot/projects/1) for progress. 
+Please see [user story board](https://github.com/jsstrn/subhas-music-bot/projects/1) for progress.
 
-## Development 
+## Development
 
-Install dependencies 
+Install dependencies
 
 ```sh
 npm install

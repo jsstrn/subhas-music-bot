@@ -19,6 +19,6 @@ functions:
           method: GET
 
 plugins:
+  - serverless-webpack
   - serverless-prune-plugin
-  - serverless-plugin-typescript
   - serverless-offline
