@@ -1,6 +1,8 @@
-import handleBotRequests from "../functions/handleBotRequests";
+import { handleBotRequests } from "../functions";
 import { bot } from "../bot";
 import { APIGatewayProxyEvent } from "aws-lambda";
+
+jest.mock("../constants");
 
 describe("Handle Bot Requests", () => {
   const handleUpdate = jest.spyOn(bot, "handleUpdate");
@@ -14,7 +16,7 @@ describe("Handle Bot Requests", () => {
     const event = {} as APIGatewayProxyEvent;
     event.body = JSON.stringify("");
     handleUpdate.mockResolvedValueOnce();
-    
+
     const { statusCode } = await handleBotRequests(event);
 
     expect(statusCode).toBe(200);
@@ -23,7 +25,7 @@ describe("Handle Bot Requests", () => {
   it("returns status code 500 upon failure", async () => {
     const event = {} as APIGatewayProxyEvent;
     event.body = JSON.stringify("");
-    handleUpdate.mockRejectedValueOnce(new Error('Something went wrong'));
+    handleUpdate.mockRejectedValueOnce(new Error("Something went wrong"));
 
     const { statusCode } = await handleBotRequests(event);
 
