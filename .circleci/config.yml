@@ -53,6 +53,7 @@ workflows:
           name: deploy-stage
           stage: stage
           context:
+            - music-bot-stage
             - aws-credentials
             - serverless-credentials
           requires:
@@ -68,6 +69,7 @@ workflows:
           name: deploy-prod
           stage: prod
           context:
+            - music-bot-prod
             - aws-credentials
             - serverless-credentials
           requires:
