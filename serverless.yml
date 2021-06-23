@@ -12,11 +12,18 @@ provider:
 
 functions:
   hello:
-    handler: src/functions/handler.hello
+    handler: src/functions/index.hello
     events:
       - http:
           path: hello
           method: GET
+  
+  handleBotRequests:
+    handler: src/functions/index.handleBotRequests
+    events:
+      - http:
+          path: handleBotRequests
+          method: POST
 
 plugins:
   - serverless-webpack

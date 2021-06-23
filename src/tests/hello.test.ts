@@ -1,4 +1,4 @@
-import { hello } from "../functions/handler";
+import { hello } from "../functions";
 
 describe("Handler", () => {
   it("returns response object", async () => {
