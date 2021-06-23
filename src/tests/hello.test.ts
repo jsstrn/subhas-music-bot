@@ -1,6 +1,6 @@
-import { hello } from "../functions";
+import hello from "../functions/hello";
 
-describe("Handler", () => {
+describe("Hello", () => {
   it("returns response object", async () => {
     expect(await hello()).toEqual({
       statusCode: 200,
