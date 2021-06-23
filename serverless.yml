@@ -3,6 +3,7 @@ app: subhas-music-bot
 service: subhas-music-bot
 
 frameworkVersion: "2"
+useDotenv: true
 
 provider:
   name: aws
@@ -26,6 +27,7 @@ functions:
           method: POST
 
 plugins:
+  - serverless-dotenv-plugin
   - serverless-webpack
   - serverless-prune-plugin
   - serverless-offline

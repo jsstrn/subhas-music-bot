@@ -20,6 +20,9 @@ jobs:
           org-name: jsstrn
           app-name: subhas-music-bot
       - run:
+          name: Create .env file
+          command: echo TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN > .env
+      - run:
           name: Deploy application to << parameters.stage >> environment
           command: npm run "deploy-to-<< parameters.stage >>"
 
@@ -34,6 +37,7 @@ workflows:
           name: deploy-dev
           stage: dev
           context:
+            - music-bot-dev
             - aws-credentials
             - serverless-credentials
           requires:
