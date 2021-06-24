@@ -21,7 +21,7 @@ jobs:
           app-name: subhas-music-bot
       - run:
           name: Create .env file
-          command: echo TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN > .env
+          command: ./circleci/create-env
       - run:
           name: Deploy application to << parameters.stage >> environment
           command: npm run "deploy-to-<< parameters.stage >>"

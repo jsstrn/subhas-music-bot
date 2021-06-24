@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+printf "\
+TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN\n\
+FLAGSMITH_API_KEY=$FLAGSMITH_API_KEY\n\
+" \
+> .env

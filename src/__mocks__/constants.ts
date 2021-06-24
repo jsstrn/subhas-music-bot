@@ -1,3 +1,4 @@
-const telegramBotToken = "your-bot-token";
+const flagsmithApiKey = "some-ff-api-key";
+const telegramBotToken = "some-bot-token";
 
-export { telegramBotToken };
+export { flagsmithApiKey, telegramBotToken };
