@@ -19,6 +19,7 @@ const telegram = new Telegram(telegramBotToken);
 
 bot.start(async (ctx) => {
   console.log('[/start] – start')
+  console.log('[/start] – key', flagsmithApiKey)
   const enabled = await flagsmith.hasFeature("start-command");
   console.log('[/start] – enabled', enabled)
   if (enabled) await ctx.reply("Wassup!");
