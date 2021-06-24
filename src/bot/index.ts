@@ -12,4 +12,8 @@ bot.start(async (ctx) => {
   await ctx.reply("Wassup!");
 });
 
+bot.help(async (ctx) => {
+  await ctx.reply("Here is some help");
+});
+
 export { bot, telegram };
