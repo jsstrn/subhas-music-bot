@@ -1,5 +1,4 @@
 import { telegram } from "../bot";
-import { handleBotRequests } from ".";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
 export default async function setWebhook(
@@ -7,7 +6,7 @@ export default async function setWebhook(
 ): Promise<APIGatewayProxyResult> {
   try {
     const { domainName, stage } = event.requestContext;
-    const handler = handleBotRequests.name;
+    const handler = "handleBotRequests";
     const url = `${domainName}/${stage}/${handler}`;
 
     await telegram.setWebhook(url);
