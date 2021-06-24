@@ -12,13 +12,6 @@ provider:
   lambdaHashingVersion: 20201221
 
 functions:
-  hello:
-    handler: src/functions/index.hello
-    events:
-      - http:
-          path: hello
-          method: GET
-
   setWebhook:
     handler: src/functions/index.setWebhook
     events:
