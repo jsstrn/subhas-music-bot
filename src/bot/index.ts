@@ -1,4 +1,4 @@
-import { Telegraf } from "telegraf";
+import { Telegraf, Telegram } from "telegraf";
 import { telegramBotToken } from "../constants";
 
 if (!telegramBotToken) {
@@ -6,9 +6,10 @@ if (!telegramBotToken) {
 }
 
 const bot = new Telegraf(telegramBotToken);
+const telegram = new Telegram(telegramBotToken);
 
 bot.start(async (ctx) => {
   await ctx.reply("Wassup!");
 });
 
-export { bot };
+export { bot, telegram };

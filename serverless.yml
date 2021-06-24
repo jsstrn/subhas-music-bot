@@ -18,7 +18,14 @@ functions:
       - http:
           path: hello
           method: GET
-  
+
+  setWebhook:
+    handler: src/functions/index.setWebhook
+    events:
+      - http:
+          path: setWebhook
+          method: GET
+
   handleBotRequests:
     handler: src/functions/index.handleBotRequests
     events:
