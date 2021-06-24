@@ -22,13 +22,19 @@ bot.start(async (ctx) => {
     const enabled = await flagsmith.hasFeature("start-command");
     if (enabled) await ctx.reply("Wassup!");
   } catch (err) {
-    console.error("[Error] Unable to reply to start command", err);
+    console.error("[Error] Unable to process your request at this time.", err);
+    await ctx.reply("Oops! Looks like something went wrong.");
   }
 });
 
 bot.help(async (ctx) => {
-  const enabled = await flagsmith.hasFeature("help-command");
-  if (enabled) await ctx.reply("Here is some help");
+  try {
+    const enabled = await flagsmith.hasFeature("help-command");
+    if (enabled) await ctx.reply("Here is some help");
+  } catch (err) {
+    console.error("[Error] Unable to process your request at this time.", err);
+    await ctx.reply("Oops! Looks like something went wrong.");
+  }
 });
 
 export { bot, telegram };
