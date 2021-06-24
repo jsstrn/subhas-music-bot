@@ -2,6 +2,10 @@ import flagsmith from "flagsmith-nodejs";
 import { Telegraf, Telegram } from "telegraf";
 import { flagsmithApiKey, telegramBotToken } from "../constants";
 
+if (!flagsmithApiKey) {
+  throw new Error('[Error] Feature flag API key is required.')
+}
+
 flagsmith.init({
   environmentID: flagsmithApiKey,
 });
@@ -14,8 +18,11 @@ const bot = new Telegraf(telegramBotToken);
 const telegram = new Telegram(telegramBotToken);
 
 bot.start(async (ctx) => {
+  console.log('[/start] – start')
   const enabled = await flagsmith.hasFeature("start-command");
+  console.log('[/start] – enabled', enabled)
   if (enabled) await ctx.reply("Wassup!");
+  console.log('[/start] – end')
 });
 
 bot.help(async (ctx) => {
