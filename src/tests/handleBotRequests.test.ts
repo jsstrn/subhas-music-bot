@@ -8,7 +8,7 @@ const handleUpdate = jest.spyOn(bot, "handleUpdate");
 handleUpdate.mockName("handleUpdate");
 
 const event = {} as APIGatewayProxyEvent;
-event.body = JSON.stringify({message: 'some request'});
+event.body = JSON.stringify({ message: "some request" });
 
 describe("Handle Bot Requests", () => {
   beforeEach(() => {
@@ -16,8 +16,6 @@ describe("Handle Bot Requests", () => {
   });
 
   it("returns status code of 200 upon success", async () => {
-    handleUpdate.mockResolvedValueOnce();
-
     const { statusCode } = await handleBotRequests(event);
 
     expect(statusCode).toBe(200);
@@ -32,18 +30,14 @@ describe("Handle Bot Requests", () => {
   });
 
   it("calls handleUpdate only once", async () => {
-    handleUpdate.mockResolvedValueOnce();
-
     await handleBotRequests(event);
 
     expect(handleUpdate).toHaveBeenCalledTimes(1);
   });
 
   it("calls handleUpdate with correct arguments", async () => {
-    handleUpdate.mockResolvedValueOnce();
-
     await handleBotRequests(event);
 
-    expect(handleUpdate).toHaveBeenCalledWith({message: "some request"});
+    expect(handleUpdate).toHaveBeenCalledWith({ message: "some request" });
   });
 });
