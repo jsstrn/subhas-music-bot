@@ -4,7 +4,6 @@
 
 ## Development
 
-
 Install dependencies
 
 ```sh
@@ -23,7 +22,7 @@ Start the bot server locally
 npm start
 ```
 
-## Miscellaneous 
+## Miscellaneous
 
 See [development board](https://github.com/jsstrn/subhas-music-bot/projects/1) for development progress.
 

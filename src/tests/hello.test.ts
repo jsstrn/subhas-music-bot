@@ -1,6 +1,6 @@
 import { hello } from "../functions";
 
-jest.mock('../constants')
+jest.mock("../constants");
 
 describe("Hello", () => {
   it("returns response object", async () => {
