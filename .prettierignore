@@ -1,3 +1,9 @@
+# environment variables
+.env*
+
+# test coverage
+coverage
+
 # build
 .build
 .webpack
