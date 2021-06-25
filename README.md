@@ -10,9 +10,10 @@ Install dependencies
 npm install
 ```
 
-Create an `.env` file
+Create an `.env` file and include the following environment variables
 
 ```sh
+FLAGSMITH_API_KEY=
 TELEGRAM_BOT_TOKEN=
 ```
 
