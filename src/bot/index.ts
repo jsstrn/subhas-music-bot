@@ -29,7 +29,7 @@ bot.help(async (ctx) => {
     if (enabled) await ctx.reply("Here is some help");
   } catch (err) {
     console.error("[Error] Unable to process your request at this time.", err);
-    await ctx.reply("Oops! Looks like something went wrong.");
+    await ctx.reply("Sorry! I'm unable to process your request at this time.");
   }
 });
 
