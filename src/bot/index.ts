@@ -17,20 +17,8 @@ if (!telegramBotToken) {
 const bot = new Telegraf(telegramBotToken);
 const telegram = new Telegram(telegramBotToken);
 
-flagsmith.hasFeature("start-command").then((enabled) => {
-  if (enabled) {
-    bot.start(async (ctx) => await ctx.reply("Wassup!"));
-  }
-});
+bot.start(async (ctx) => await ctx.reply("Wassup!"));
 
-bot.help(async (ctx) => {
-  try {
-    const enabled = await flagsmith.hasFeature("help-command");
-    if (enabled) await ctx.reply("Here is some help");
-  } catch (err) {
-    console.error("[Error] Unable to process your request at this time.", err);
-    await ctx.reply("Sorry! I'm unable to process your request at this time.");
-  }
-});
+bot.help(async (ctx) => await ctx.reply("Here is some help"));
 
 export { bot, telegram };
