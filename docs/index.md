@@ -25,3 +25,7 @@ We keep track of what needs to be worked on through our [development board](http
 ## The importance of project milestones
 
 As a software engineer, I tend to focus on quality code and technical aspects of the project. While these are very important in any project, priority needs to be given to business value. Setting up milestones allows me to look at a card and decide whether it needs to be worked on right now or pushed to a later release.
+
+## TypeScript 
+
+TypeScript compiler options for Node 14 are based on [Node Target Mapping](https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping).
