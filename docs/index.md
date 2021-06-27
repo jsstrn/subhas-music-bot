@@ -1,10 +1,8 @@
-# Subhas Music Bot
-
-## What I've learned while working on this project
+# What I've learned while working on this project
 
 This is a living document for me to record what I've learned while working on this project.
 
-### Architecture
+## Architecture
 
 I created architectural diagrams with [Cloudcraft](https://cloudcraft.co/) because they work well for AWS infrastructure and can be easily exported into various formats.
 
