@@ -23,8 +23,6 @@ Start the bot server locally
 npm start
 ```
 
-## Miscellaneous
+## Learning journey
 
-See [development board](https://github.com/jsstrn/subhas-music-bot/projects/1) for development progress.
-
-TypeScript compiler options for Node 14 are based on [Node Target Mapping](https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping).
+In the spirit of learning in public, I've [documented my learning journey](https://jsstrn.github.io/subhas-music-bot/) on this project.
