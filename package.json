@@ -51,7 +51,7 @@
     "dotenv": "^10.0.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
-    "jest": "^27.0.4",
+    "jest": "^27.0.5",
     "prettier": "^2.3.1",
     "serverless-dotenv-plugin": "^3.9.0",
     "serverless-offline": "^7.0.0",
