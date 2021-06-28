@@ -33,7 +33,7 @@
     "url": "git+https://github.com/jsstrn/subhas-music-bot.git"
   },
   "author": "Jesstern Rays <jsstrn@users.noreply.github.com>",
-  "license": "ISC",
+  "license": "AGPL-3.0-only",
   "bugs": {
     "url": "https://github.com/jsstrn/subhas-music-bot/issues"
   },
