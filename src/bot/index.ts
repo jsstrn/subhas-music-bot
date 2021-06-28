@@ -1,14 +1,5 @@
-import flagsmith from "flagsmith-nodejs";
 import { Telegraf, Telegram } from "telegraf";
-import { flagsmithApiKey, telegramBotToken } from "../constants";
-
-if (!flagsmithApiKey) {
-  throw new Error("[Error] Feature flag API key is required.");
-}
-
-flagsmith.init({
-  environmentID: flagsmithApiKey,
-});
+import { telegramBotToken } from "../constants";
 
 if (!telegramBotToken) {
   throw new Error("[ERROR] Telegram bot token is required.");
