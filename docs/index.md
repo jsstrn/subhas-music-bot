@@ -18,14 +18,20 @@ I can also simulate the impact of high traffic and plan accordingly. For instanc
 
 ## Team collaboration
 
-My team and I use an interactive whiteboard from [Miro](https://miro.com/) to collaborate on wireframes, user journeys, bot features, and milestones, among other things. 
+My team and I use an interactive whiteboard from [Miro](https://miro.com/) to collaborate on wireframes, user journeys, bot features, and milestones, among other things.
 
-We keep track of what needs to be worked on through our [development board](https://github.com/jsstrn/subhas-music-bot/projects/1). Each card is essetially a task and is assigned labels and a milestone in order to prioritize them for the next release. 
+We keep track of what needs to be worked on through our [development board](https://github.com/jsstrn/subhas-music-bot/projects/1). Each card is essetially a task and is assigned labels and a milestone in order to prioritize them for the next release.
 
 ## The importance of project milestones
 
 As a software engineer, I tend to focus on quality code and technical aspects of the project. While these are very important in any project, priority needs to be given to business value. Setting up milestones allows me to look at a card and decide whether it needs to be worked on right now or pushed to a later release.
 
-## TypeScript 
+## Picking an open source license
 
-TypeScript compiler options for Node 14 are based on [Node Target Mapping](https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping).
+I knew I wanted to have an open source license for the project, but there are [numerous options available](https://choosealicense.com/licenses/). After some deliberation I settled for [GNU AGPLv3](https://choosealicense.com/licenses/agpl-3.0/).
+
+There's also a license field in `package.json` which uses identifiers listed in the [SPDX License List](https://spdx.org/licenses/).
+
+## TypeScript
+
+AWS Lambda supports Node 14 so we can set the TypeScript compiler options based on [Node Target Mapping](https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping).
