@@ -14,9 +14,7 @@ telegram.setMyCommands([
   { command: "about", description: "Learn more about this bot" },
 ]);
 
-bot.start(async (ctx) => {
-  await ctx.reply("Wassup!");
-});
+bot.start(async (ctx) => await ctx.reply("Wassup!"));
 
 bot.help(async (ctx) => await ctx.reply("Here is some help"));
 
