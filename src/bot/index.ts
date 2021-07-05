@@ -1,5 +1,7 @@
 import { Telegraf, Telegram } from "telegraf";
 import { telegramBotToken } from "../constants";
+import { content } from "./content";
+import { commandMenu } from "./commands";
 
 if (!telegramBotToken) {
   throw new Error("[ERROR] Telegram bot token is required.");
@@ -8,24 +10,16 @@ if (!telegramBotToken) {
 const bot = new Telegraf(telegramBotToken);
 const telegram = new Telegram(telegramBotToken);
 
-telegram.setMyCommands([
-  { command: "music", description: "Get all available music" },
-  { command: "help", description: "Learn how to use the bot" },
-  { command: "about", description: "Learn more about this bot" },
-]);
+telegram.setMyCommands(commandMenu);
 
-bot.start(async (ctx) => await ctx.reply("Wassup!"));
+bot.start(async (ctx) => await ctx.reply(content(ctx).start));
 
-bot.help(async (ctx) => await ctx.reply("Here is some help"));
+bot.help(async (ctx) => await ctx.reply(content(ctx).help));
 
-bot.command(
-  "about",
-  async (ctx) => await ctx.reply("Some information about this bot")
-);
+bot.command("about", async (ctx) => await ctx.reply(content(ctx).about));
 
-bot.command(
-  "music",
-  async (ctx) => await ctx.reply("List of all available albums")
-);
+bot.command("music", async (ctx) => await ctx.reply(content(ctx).music));
+
+bot.command("version", async (ctx) => await ctx.reply(content(ctx).version));
 
 export { bot, telegram };
