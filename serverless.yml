@@ -25,6 +25,8 @@ functions:
       - http:
           path: handleBotRequests
           method: POST
+      - s3:
+          bucket: my-first-bucket
 
 plugins:
   - serverless-dotenv-plugin
