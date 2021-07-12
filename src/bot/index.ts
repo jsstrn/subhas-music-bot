@@ -27,7 +27,7 @@ bot.command("about", async (ctx) => await ctx.reply(content(ctx).about));
 
 bot.command("music", async (ctx) => {
   try {
-    await ctx.replyWithAudio(getS3ObjectUrl("song.mp3"));
+    await ctx.replyWithAudio(getS3ObjectUrl("songs/song.mp3"));
   } catch (err) {
     await ctx.reply(content(ctx).error);
   }
