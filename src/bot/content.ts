@@ -13,6 +13,7 @@ interface MessageContent {
   about: string;
   music: string;
   version: string;
+  error: string;
 }
 
 const menu = printCommandMenu(commandMenu);
@@ -27,5 +28,6 @@ export const content = (ctx: Context): MessageContent => {
     about: `This bot is built for artists by artists.`,
     music: `List all music.`,
     version: `v${packageVersion}`,
+    error: "Something went wrong. Please try again later.",
   };
 };
