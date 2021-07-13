@@ -19,7 +19,7 @@ interface MessageContent {
 const menu = printCommandMenu(commandMenu);
 
 export const content = (ctx: Context): MessageContent => {
-  const firstName = ctx.from?.first_name;
+  const firstName = ctx.from?.first_name ?? "friend";
   const packageVersion = process.env.npm_package_version;
 
   return {
