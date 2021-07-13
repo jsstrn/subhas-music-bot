@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/bot",
+      "lambdaFunction": "handleBotRequests",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/bot"
+    }
+  ],
+  "resourceName": "handleBotRequests",
+  "apiName": "handleBotRequests",
+  "functionArns": [
+    {
+      "lambdaFunction": "handleBotRequests"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-subhasmusic-dev-91229-authRole",
+    "unAuthRoleName": "amplify-subhasmusic-dev-91229-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "handleBotRequests",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

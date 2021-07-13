@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-subhasmusic-dev-91229-authRole",
+      "UnauthRoleArn": "arn:aws:iam::873977296327:role/amplify-subhasmusic-dev-91229-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::873977296327:role/amplify-subhasmusic-dev-91229-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-subhasmusic-dev-91229-deployment",
+      "UnauthRoleName": "amplify-subhasmusic-dev-91229-unauthRole",
+      "StackName": "amplify-subhasmusic-dev-91229",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:873977296327:stack/amplify-subhasmusic-dev-91229/1fca0bb0-dd71-11eb-a357-0638f3f69c86",
+      "AmplifyAppId": "dktwtc4jua6r0"
+    },
+    "categories": {
+      "function": {
+        "handleBotRequests": {
+          "deploymentBucketName": "amplify-subhasmusic-dev-91229-deployment",
+          "s3Key": "amplify-builds/handleBotRequests-366e6854624732343072-build.zip"
+        }
+      }
+    }
+  }
+}

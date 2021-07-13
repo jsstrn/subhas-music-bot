@@ -1,0 +1,58 @@
+type Customer @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+}
+
+type Order @model @auth(rules: [{allow: public}]) {
+  id: ID!
+}
+
+type Artist @model @auth(rules: [{allow: public}]) @key(name: "bySong", fields: ["songID"]) {
+  id: ID!
+  name: String!
+  pronouns: Pronoun!
+  description: String
+  email: AWSEmail!
+  mobile: AWSPhone!
+  bankAccount: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  songID: ID
+}
+
+type Album @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  tracks: [Song] @connection(keyName: "byAlbum", fields: ["id"])
+  description: String
+  price: Int
+  cover: AWSURL
+  launchDateTime: AWSDateTime
+}
+
+type Song @model @auth(rules: [{allow: public}]) @key(name: "byAlbum", fields: ["albumID"]) {
+  id: ID!
+  title: String
+  price: Int
+  artists: [Artist] @connection(keyName: "bySong", fields: ["id"])
+  collaborators: [Collaborator]
+  lyrics: AWSURL
+  preview: AWSURL
+  file: AWSURL
+  albumID: ID
+}
+
+type Collaborator {
+  name: String
+  function: String
+}
+
+enum Pronoun {
+  HE
+  SHE
+  THEY
+}
+
+enum Currency {
+  SGD
+}
