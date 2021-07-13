@@ -1,4 +1,6 @@
-const flagsmithApiKey = "some-ff-api-key";
-const telegramBotToken = "some-bot-token";
+const FLAGSMITH_API_KEY = "FLAGSMITH_API_KEY";
+const TELEGRAM_BOT_TOKEN = "TELEGRAM_BOT_TOKEN";
+const S3_BUCKET_NAME = "S3_BUCKET_NAME";
+const S3_REGION = "S3_REGION";
 
-export { flagsmithApiKey, telegramBotToken };
+export { FLAGSMITH_API_KEY, TELEGRAM_BOT_TOKEN, S3_BUCKET_NAME, S3_REGION };
