@@ -21,7 +21,7 @@ event.requestContext = {
   stage: "some-stage",
 } as APIGatewayEventRequestContextWithAuthorizer<APIGatewayEventDefaultAuthorizerContext>;
 
-describe("Handle Bot Requests", () => {
+describe("Set webhook", () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });
