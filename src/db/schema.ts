@@ -3,8 +3,9 @@ export interface Artist {
 }
 
 interface File {
-  preview: string;
-  mp3: string;
+  id: string;
+  source: "telegram" | "s3";
+  type: "preview" | "track" | "cover";
 }
 
 export interface Credit {
@@ -12,9 +13,11 @@ export interface Credit {
   role: string;
 }
 
-export interface Song {
+export interface Track {
   id: string;
+  albumId: string;
   title: string;
+  files: File[];
   lyrics?: string;
 }
 
@@ -26,5 +29,5 @@ export interface Album {
   price: number;
   lyrics: string;
   credits: Credit[];
-  songs: Song[];
+  tracks: Track[];
 }
