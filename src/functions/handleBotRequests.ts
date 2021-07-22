@@ -12,6 +12,8 @@ export default async function handleBotRequests(
       body: JSON.stringify(""),
     };
   } catch (err) {
+    console.error("[ERROR]", err);
+    
     return {
       statusCode: 500,
       body: JSON.stringify("[Error] Unable to handle bot requests"),

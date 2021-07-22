@@ -2,8 +2,13 @@ import { Composer, Context } from "telegraf";
 import { content } from "../content";
 import { albums } from "../../db/albums";
 import { Track } from "../../db/schema";
+import { parse, ParsedQuery } from "query-string";
 
 const formatPrice = (price: number): string => `$${(price / 100).toFixed(2)}`;
+
+const parseCallbackQuery = (data: string): ParsedQuery => {
+  return parse(data);
+};
 
 const viewAlbumList = async (ctx: Context) => {
   try {
@@ -22,7 +27,6 @@ const viewAlbumList = async (ctx: Context) => {
       },
     });
   } catch (err) {
-    console.error("[ERROR]", err);
     await ctx.reply(content(ctx).error);
   }
 };
@@ -73,9 +77,7 @@ const viewAlbumInfo = async (ctx: Context) => {
         ],
       },
     });
-  } catch (err) {
-    console.error("[ERROR]", err);
-  }
+  } catch (err) {}
 };
 
 const viewTrackList = async (ctx: Context) => {
@@ -106,7 +108,6 @@ const viewTrackList = async (ctx: Context) => {
       },
     });
   } catch (err) {
-    console.error("[ERROR]", err);
     await ctx.reply(content(ctx).error);
   }
 };
@@ -123,7 +124,6 @@ const viewTackInfo = async (ctx: Context) => {
 
     await ctx.replyWithAudio(file);
   } catch (err) {
-    console.error("[ERROR]", err);
     await ctx.reply(content(ctx).error);
   }
 };
@@ -132,7 +132,6 @@ const requestInvoice = async (ctx: Context) => {
   try {
     await ctx.reply("🏗  Payment feature is under construction");
   } catch (err) {
-    console.error("[ERROR]", err);
     await ctx.reply(content(ctx).error);
   }
 };
