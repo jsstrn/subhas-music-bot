@@ -22,55 +22,60 @@ const viewAlbumList = async (ctx: Context) => {
       },
     });
   } catch (err) {
+    console.error("[ERROR]", err);
     await ctx.reply(content(ctx).error);
   }
 };
 
 const viewAlbumInfo = async (ctx: Context) => {
-  // @ts-ignore
-  const { data } = ctx.callbackQuery;
-  const albumId = data.split(":")[1];
-  // @ts-ignore
-  const { id, title, price, artist } = albums.find((a) => a.id === albumId);
+  try {
+    // @ts-ignore
+    const { data } = ctx.callbackQuery;
+    const albumId = data.split(":")[1];
+    // @ts-ignore
+    const { id, title, price, artist } = albums.find((a) => a.id === albumId);
 
-  await ctx.deleteMessage();
+    await ctx.deleteMessage();
 
-  const cover =
-    "AgACAgQAAxkDAAICtGD5Klqn7SKXoN9_dnL3r_ErU7UXAAKDrDEb6q7kUM2Hd4D2lCA6AQADAgADcwADIAQ";
+    const cover =
+      "AgACAgQAAxkDAAICtGD5Klqn7SKXoN9_dnL3r_ErU7UXAAKDrDEb6q7kUM2Hd4D2lCA6AQADAgADcwADIAQ";
 
-  // cover: albums/{id}/cover
-  // previews: albums/{id}/previews <= show all previews for an album?
-  // previews: albums/{id}/previews/{song-id}
+    // cover: albums/{id}/cover
+    // previews: albums/{id}/previews <= show all previews for an album?
+    // previews: albums/{id}/previews/{song-id}
 
-  // share requires
-  // 1. inline query
-  // 2. inline keyboard => switch inline query
+    // share requires
+    // 1. inline query
+    // 2. inline keyboard => switch inline query
 
-  await ctx.replyWithPhoto(cover, {
-    caption: `🎵  ${title} by ${artist.name}`,
-    reply_markup: {
-      inline_keyboard: [
-        [
-          {
-            text: `🎧  View Track List`,
-            callback_data: `view-track-list:${id}`,
-          },
+    await ctx.replyWithPhoto(cover, {
+      caption: `🎵  ${title} by ${artist.name}`,
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: `🎧  View Track List`,
+              callback_data: `view-track-list:${id}`,
+            },
+          ],
+          [
+            {
+              text: `💳  Buy for ${formatPrice(price)}`,
+              callback_data: `request-invoice:${id}`,
+            },
+          ],
+          [
+            {
+              text: `⬅️  Back to Album List`,
+              callback_data: "view-album-list",
+            },
+          ],
         ],
-        [
-          {
-            text: `💳  Buy for ${formatPrice(price)}`,
-            callback_data: `request-invoice:${id}`,
-          },
-        ],
-        [
-          {
-            text: `⬅️  Back to Album List`,
-            callback_data: "view-album-list",
-          },
-        ],
-      ],
-    },
-  });
+      },
+    });
+  } catch (err) {
+    console.error("[ERROR]", err);
+  }
 };
 
 const viewTrackList = async (ctx: Context) => {
@@ -101,7 +106,7 @@ const viewTrackList = async (ctx: Context) => {
       },
     });
   } catch (err) {
-    console.error(err);
+    console.error("[ERROR]", err);
     await ctx.reply(content(ctx).error);
   }
 };
@@ -127,6 +132,7 @@ const requestInvoice = async (ctx: Context) => {
   try {
     await ctx.reply("🏗  Payment feature is under construction");
   } catch (err) {
+    console.error("[ERROR]", err);
     await ctx.reply(content(ctx).error);
   }
 };
