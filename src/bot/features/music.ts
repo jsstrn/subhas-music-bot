@@ -112,8 +112,8 @@ const viewTackInfo = async (ctx: Context) => {
   try {
     // @ts-ignore
     const { data } = ctx.callbackQuery;
-    const [, trackId] = data.split(":");
-
+    console.log("data - ctx.callbackQuery", ctx.callbackQuery);
+    const trackId = data.split(":")[1];
     console.log("track id", trackId);
 
     const fileId =
@@ -122,6 +122,7 @@ const viewTackInfo = async (ctx: Context) => {
     const audio = await ctx.replyWithAudio(fileId);
     console.log("audio", audio);
   } catch (err) {
+    console.error("[ERROR]", err);
     await ctx.reply(content(ctx).error);
   }
 };
