@@ -8,13 +8,16 @@ const formatPrice = (price: number): string => `$${(price / 100).toFixed(2)}`;
 
 const viewAlbumList = async (ctx: Context) => {
   try {
-    const albumList = albums.map(({ id, title }) => [
-      { text: `🎵  ${title}`, callback_data: `view-album:${id}` },
+    const albumList = albums.map(({ id, title, artist }) => [
+      {
+        text: `🎵  ${title} by ${artist.name}`,
+        callback_data: `view-album:${id}`,
+      },
     ]);
 
     await ctx.deleteMessage();
 
-    await ctx.reply("🎸  Select an album:", {
+    await ctx.reply("🎸  Select an album", {
       reply_markup: {
         inline_keyboard: albumList,
       },
@@ -34,7 +37,7 @@ const viewAlbumInfo = async (ctx: Context) => {
   await ctx.deleteMessage();
 
   const cover =
-    "https://fanart.tv/fanart/music/62cfba2f-d6da-4c93-a2e2-a7922fe47d1b/albumcover/the-music-5ac7c0b44f3de.jpg";
+    "AgACAgQAAxkDAAICtGD5Klqn7SKXoN9_dnL3r_ErU7UXAAKDrDEb6q7kUM2Hd4D2lCA6AQADAgADcwADIAQ";
 
   // cover: albums/{id}/cover
   // previews: albums/{id}/previews <= show all previews for an album?
@@ -86,7 +89,7 @@ const viewTrackList = async (ctx: Context) => {
 
     await ctx.deleteMessage();
 
-    await ctx.reply("🎸  Select a track:", {
+    await ctx.reply("🎸  Select a track", {
       reply_markup: {
         inline_keyboard: [
           ...trackList,
@@ -101,21 +104,26 @@ const viewTrackList = async (ctx: Context) => {
     });
   } catch (err) {
     console.error(err);
+    await ctx.reply(content(ctx).error);
   }
 };
 
 const viewTackInfo = async (ctx: Context) => {
-  // @ts-ignore
-  const { data } = ctx.callbackQuery;
-  const [, trackId] = data.split(":");
+  try {
+    // @ts-ignore
+    const { data } = ctx.callbackQuery;
+    const [, trackId] = data.split(":");
 
-  console.log("track id", trackId);
+    console.log("track id", trackId);
 
-  const fileId =
-    "CQACAgQAAxkDAAICoWD36IuqrBVgKrRfWtH70Km6qeF2AAKlAgACm-3FU3mUAiAoXrbCIAQ";
+    const fileId =
+      "CQACAgQAAxkDAAICoWD36IuqrBVgKrRfWtH70Km6qeF2AAKlAgACm-3FU3mUAiAoXrbCIAQ";
 
-  const audio = await ctx.replyWithAudio(fileId);
-  console.log("audio", audio);
+    const audio = await ctx.replyWithAudio(fileId);
+    console.log("audio", audio);
+  } catch (err) {
+    await ctx.reply(content(ctx).error);
+  }
 };
 
 export default Composer.compose([
