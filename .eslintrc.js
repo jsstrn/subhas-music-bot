@@ -14,5 +14,7 @@ module.exports = {
     ecmaVersion: 12,
   },
   plugins: ["@typescript-eslint"],
-  rules: {},
+  rules: {
+    "@typescript-eslint/ban-ts-comment": "off",
+  },
 };
