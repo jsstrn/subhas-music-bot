@@ -2,13 +2,8 @@ import { Composer, Context } from "telegraf";
 import { content } from "../content";
 import { albums } from "../../db/albums";
 import { Track } from "../../db/schema";
-import { parse, ParsedQuery } from "query-string";
 
 const formatPrice = (price: number): string => `$${(price / 100).toFixed(2)}`;
-
-const parseCallbackQuery = (data: string): ParsedQuery => {
-  return parse(data);
-};
 
 const viewAlbumList = async (ctx: Context) => {
   try {
