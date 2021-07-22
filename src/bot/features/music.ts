@@ -1,7 +1,6 @@
 import { Composer, Context } from "telegraf";
 import { content } from "../content";
 import { albums } from "../../db/albums";
-import { actions } from "./actions";
 import { Track } from "../../db/schema";
 
 const formatPrice = (price: number): string => `$${(price / 100).toFixed(2)}`;
@@ -11,7 +10,7 @@ const viewAlbumList = async (ctx: Context) => {
     const albumList = albums.map(({ id, title, artist }) => [
       {
         text: `🎵  ${title} by ${artist.name}`,
-        callback_data: `view-album:${id}`,
+        callback_data: `view-album-info:${id}`,
       },
     ]);
 
@@ -60,13 +59,13 @@ const viewAlbumInfo = async (ctx: Context) => {
         [
           {
             text: `💳  Buy for ${formatPrice(price)}`,
-            callback_data: actions(id).purchase,
+            callback_data: `request-invoice:${id}`,
           },
         ],
         [
           {
             text: `⬅️  Back to Album List`,
-            callback_data: "music",
+            callback_data: "view-album-list",
           },
         ],
       ],
@@ -83,8 +82,7 @@ const viewTrackList = async (ctx: Context) => {
     const { tracks } = albums.find((a) => a.id === albumId);
 
     const trackList = tracks.map(({ id: trackId, title }: Track) => [
-      // { text: title, callback_data: `view-track:${albumId}:${trackId}` },
-      { text: `🎧  ${title}`, callback_data: `view-track:${trackId}` },
+      { text: `🎧  ${title}`, callback_data: `view-track-info:${trackId}` },
     ]);
 
     await ctx.deleteMessage();
@@ -96,7 +94,7 @@ const viewTrackList = async (ctx: Context) => {
           [
             {
               text: "⬅️ Back to Album",
-              callback_data: `view-album:${albumId}`,
+              callback_data: `view-album-info:${albumId}`,
             },
           ],
         ],
@@ -112,25 +110,32 @@ const viewTackInfo = async (ctx: Context) => {
   try {
     // @ts-ignore
     const { data } = ctx.callbackQuery;
-    console.log("data - ctx.callbackQuery", ctx.callbackQuery);
     const trackId = data.split(":")[1];
     console.log("track id", trackId);
 
     const file =
-      "https://cdn.pixabay.com/download/audio/2021/02/08/audio_ecc4386888.mp3?filename=background-loop-straight-04-2699.mp3";
+      "https://cdn.pixabay.com/download/audio/2021/02/08/audio_ecc4386888.mp3?filename=sample.mp3";
 
-    const audio = await ctx.replyWithAudio(file);
-    console.log("audio", audio);
+    await ctx.replyWithAudio(file);
   } catch (err) {
     console.error("[ERROR]", err);
     await ctx.reply(content(ctx).error);
   }
 };
 
+const requestInvoice = async (ctx: Context) => {
+  try {
+    await ctx.reply("🏗  Payment feature is under construction");
+  } catch (err) {
+    await ctx.reply(content(ctx).error);
+  }
+};
+
 export default Composer.compose([
   Composer.command("music", viewAlbumList),
-  Composer.action("music", viewAlbumList),
-  Composer.action(/view-album:.+/, viewAlbumInfo),
+  Composer.action("view-album-list", viewAlbumList),
+  Composer.action(/view-album-info:.+/, viewAlbumInfo),
   Composer.action(/view-track-list:.+/, viewTrackList),
-  Composer.action(/view-track:.+/, viewTackInfo),
+  Composer.action(/view-track-info:.+/, viewTackInfo),
+  Composer.action(/request-invoice:.+/, requestInvoice),
 ]);
