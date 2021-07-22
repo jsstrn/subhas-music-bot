@@ -38,7 +38,7 @@ const viewAlbumInfo = async (ctx: Context) => {
     await ctx.deleteMessage();
 
     const cover =
-      "AgACAgQAAxkDAAICtGD5Klqn7SKXoN9_dnL3r_ErU7UXAAKDrDEb6q7kUM2Hd4D2lCA6AQADAgADcwADIAQ";
+      "https://fanart.tv/fanart/music/62cfba2f-d6da-4c93-a2e2-a7922fe47d1b/albumcover/the-music-5ac7c0b44f3de.jpg";
 
     // cover: albums/{id}/cover
     // previews: albums/{id}/previews <= show all previews for an album?
