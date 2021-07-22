@@ -116,10 +116,10 @@ const viewTackInfo = async (ctx: Context) => {
     const trackId = data.split(":")[1];
     console.log("track id", trackId);
 
-    const fileId =
-      "CQACAgQAAxkDAAICoWD36IuqrBVgKrRfWtH70Km6qeF2AAKlAgACm-3FU3mUAiAoXrbCIAQ";
+    const file =
+      "https://cdn.pixabay.com/download/audio/2021/02/08/audio_ecc4386888.mp3?filename=background-loop-straight-04-2699.mp3";
 
-    const audio = await ctx.replyWithAudio(fileId);
+    const audio = await ctx.replyWithAudio(file);
     console.log("audio", audio);
   } catch (err) {
     console.error("[ERROR]", err);
