@@ -1,5 +1,6 @@
 import { bot } from "../bot";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
+import { log } from "../util";
 
 export default async function handleBotRequests(
   event: APIGatewayProxyEvent
@@ -12,8 +13,8 @@ export default async function handleBotRequests(
       body: JSON.stringify(""),
     };
   } catch (err) {
-    console.error("[ERROR]", err);
-    
+    log.error(err);
+
     return {
       statusCode: 500,
       body: JSON.stringify("[Error] Unable to handle bot requests"),
