@@ -1,15 +1,17 @@
-interface Action {
-  act: string;
-  re: RegExp | null;
-}
-
-interface Actions {
-  [key: string]: Action;
-}
-
-export const actions: Actions = {
-  viewAlbumList: { act: "view-album-list", re: null },
-  viewAlbumInfo: { act: "view-album-info", re: /view-album-info#.+/ },
-  viewTrackList: { act: "view-track-list", re: /view-track-list#.+/ },
-  viewTrackInfo: { act: "view-track-info", re: /view-track-info#.+/ },
+const getActionRegExp = (action: string): RegExp => {
+  return new RegExp(action + "#" + ".+");
 };
+
+export const viewAlbumListAction = "view-album-list";
+
+export const viewAlbumInfoAction = "view-album-info";
+export const viewAlbumInfoRegExp = getActionRegExp(viewAlbumInfoAction);
+
+export const viewTrackListAction = "view-track-list";
+export const viewTrackListRegExp = getActionRegExp(viewTrackListAction);
+
+export const viewTrackInfoAction = "view-track-info";
+export const viewTrackInfoRegExp = getActionRegExp(viewTrackInfoAction);
+
+export const requestInvoiceAction = "request-invoice";
+export const requestInvoiceRegExp = getActionRegExp(requestInvoiceAction);

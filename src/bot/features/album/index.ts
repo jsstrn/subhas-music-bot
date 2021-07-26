@@ -3,11 +3,17 @@ import { viewAlbumList } from "./viewAlbumList";
 import { viewAlbumInfo } from "./viewAlbumInfo";
 import { viewTrackList } from "./viewTrackList";
 import { viewTackInfo } from "./viewTrackInfo";
+import {
+  viewAlbumListAction,
+  viewAlbumInfoRegExp,
+  viewTrackInfoRegExp,
+  viewTrackListRegExp,
+} from "../props/actions";
 
 export default Composer.compose([
   Composer.command("music", viewAlbumList),
-  Composer.action("view-album-list", viewAlbumList),
-  Composer.action(/view-album-info#.+/, viewAlbumInfo),
-  Composer.action(/view-track-list#.+/, viewTrackList),
-  Composer.action(/view-track-info#.+/, viewTackInfo),
+  Composer.action(viewAlbumListAction, viewAlbumList),
+  Composer.action(viewAlbumInfoRegExp, viewAlbumInfo),
+  Composer.action(viewTrackListRegExp, viewTrackList),
+  Composer.action(viewTrackInfoRegExp, viewTackInfo),
 ]);

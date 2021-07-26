@@ -1,6 +1,6 @@
 import { Telegraf, Telegram } from "telegraf";
 import { TELEGRAM_BOT_TOKEN } from "../constants";
-import { menu } from "./features/props";
+import { menu } from "./features/props/commands";
 import features from "./features";
 
 if (!TELEGRAM_BOT_TOKEN) {
