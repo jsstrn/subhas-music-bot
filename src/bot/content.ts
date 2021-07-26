@@ -1,6 +1,6 @@
 import { Context } from "telegraf";
 import { BotCommand } from "telegraf/typings/core/types/typegram";
-import { commandMenu } from "./commands";
+import { menu } from "./features/props";
 
 const printCommandMenu = (commands: BotCommand[]) =>
   commands
@@ -16,7 +16,7 @@ interface MessageContent {
   error: string;
 }
 
-const menu = printCommandMenu(commandMenu);
+const commandMenu = printCommandMenu(menu);
 
 export const content = (ctx: Context): MessageContent => {
   const firstName = ctx.from?.first_name ?? "friend";
@@ -24,7 +24,7 @@ export const content = (ctx: Context): MessageContent => {
 
   return {
     start: `Hi ${firstName}, I'm a bot that can help you purchase music from your favorite local artists.`,
-    help: `Available commands:\n\n${menu}`,
+    help: `Available commands:\n\n${commandMenu}`,
     about: `This bot is built for artists by artists.`,
     music: `List all music.`,
     version: `v${packageVersion}`,
