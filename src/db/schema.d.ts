@@ -4,7 +4,7 @@ export interface Artist {
 
 type SourceType = "store" | "web";
 type Category = "preview" | "song" | "ringtone" | "zip";
-type MimeType = "application/zip" | "audio/mpeg";
+type MimeType = "application/zip" | "audio/mpeg" | "audio/mp4" | "audio/wav";
 
 interface File {
   id: string;
@@ -34,7 +34,7 @@ export interface Album {
   description: string;
   cover: string;
   price: number;
-  lyrics: string;
+  lyrics?: string;
   credits: Credit[];
   tracks: Track[];
   files?: File[];
