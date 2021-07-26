@@ -1,14 +1,16 @@
 import { Composer } from "telegraf";
-import startCommand from "./start";
-import helpCommand from "./help";
-import aboutCommand from "./about";
-import musicCommand from "./music";
-import versionCommand from "./version";
+import start from "./start";
+import help from "./help";
+import about from "./about";
+import version from "./version";
+import album from "./album";
+import invoice from "./invoice";
 
 export default Composer.compose([
-  startCommand,
-  helpCommand,
-  aboutCommand,
-  musicCommand,
-  versionCommand,
+  start,
+  help,
+  about,
+  album,
+  invoice,
+  version,
 ]);
