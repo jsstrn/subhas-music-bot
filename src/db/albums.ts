@@ -9,7 +9,7 @@ export const albums: Album[] = [
     price: 2000,
     lyrics: "https://genius.com/albums/Subhas/Tabula-rasa",
     cover:
-      "https://fanart.tv/fanart/music/62cfba2f-d6da-4c93-a2e2-a7922fe47d1b/albumcover/the-music-5ac7c0b44f3de.jpg",
+      "https://images.genius.com/a9fa6c9b468a68a781a9ca4748f9dc84.1000x1000x1.png",
     credits: [
       { role: "Production", name: "FAUXE" },
       { role: "Vocals", name: "FAUXE" },
