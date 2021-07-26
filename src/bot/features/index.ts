@@ -3,14 +3,14 @@ import start from "./start";
 import help from "./help";
 import about from "./about";
 import version from "./version";
-import album from "./album";
+import albums from "./albums";
 import invoice from "./invoice";
 
 export default Composer.compose([
   start,
   help,
   about,
-  album,
+  albums,
   invoice,
   version,
 ]);
