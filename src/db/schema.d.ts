@@ -2,10 +2,16 @@ export interface Artist {
   name: string;
 }
 
+type SourceType = "store" | "web";
+type Category = "preview" | "song" | "ringtone" | "zip";
+type MimeType = "application/zip" | "audio/mpeg";
+
 interface File {
   id: string;
-  source: "telegram" | "s3";
-  type: "preview" | "track" | "cover";
+  name: string;
+  source: SourceType;
+  type: MimeType;
+  category: Category;
 }
 
 export interface Credit {
@@ -26,8 +32,10 @@ export interface Album {
   title: string;
   artist: Artist;
   description: string;
+  cover: string;
   price: number;
   lyrics: string;
   credits: Credit[];
   tracks: Track[];
+  files?: File[];
 }

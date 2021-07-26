@@ -1,26 +1,26 @@
-import { Composer, Context } from "telegraf";
+import { Composer, Context, Markup } from "telegraf";
 import { content } from "../content";
 import { albums } from "../../db/albums";
 import { Track } from "../../db/schema";
+import { parseCallbackQueryData } from "../../util";
 
 const formatPrice = (price: number): string => `$${(price / 100).toFixed(2)}`;
 
 const viewAlbumList = async (ctx: Context) => {
   try {
     const albumList = albums.map(({ id, title, artist }) => [
-      {
-        text: `🎵  ${title} by ${artist.name}`,
-        callback_data: `view-album-info:${id}`,
-      },
+      Markup.button.callback(
+        `🎵  ${title} by ${artist.name}`,
+        `view-album-info#albumId=${id}`
+      ),
     ]);
 
     await ctx.deleteMessage();
 
-    await ctx.reply("🎸  Select an album", {
-      reply_markup: {
-        inline_keyboard: albumList,
-      },
-    });
+    await ctx.reply(
+      "🎸  Select an album",
+      Markup.inlineKeyboard([...albumList])
+    );
   } catch (err) {
     await ctx.reply(content(ctx).error);
   }
@@ -30,78 +30,67 @@ const viewAlbumInfo = async (ctx: Context) => {
   try {
     // @ts-ignore
     const { data } = ctx.callbackQuery;
-    const albumId = data.split(":")[1];
+    const { albumId } = parseCallbackQueryData(data);
     // @ts-ignore
-    const { id, title, price, artist } = albums.find((a) => a.id === albumId);
+    const { id, title, price, artist, cover } = albums.find(
+      (a) => a.id === albumId
+    );
 
     await ctx.deleteMessage();
 
-    const cover =
-      "https://fanart.tv/fanart/music/62cfba2f-d6da-4c93-a2e2-a7922fe47d1b/albumcover/the-music-5ac7c0b44f3de.jpg";
-
-    // cover: albums/{id}/cover
-    // previews: albums/{id}/previews <= show all previews for an album?
-    // previews: albums/{id}/previews/{song-id}
-
-    // share requires
-    // 1. inline query
-    // 2. inline keyboard => switch inline query
-
     await ctx.replyWithPhoto(cover, {
       caption: `🎵  ${title} by ${artist.name}`,
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: `🎧  View Track List`,
-              callback_data: `view-track-list:${id}`,
-            },
-          ],
-          [
-            {
-              text: `💳  Buy for ${formatPrice(price)}`,
-              callback_data: `request-invoice:${id}`,
-            },
-          ],
-          [
-            {
-              text: `⬅️  Back to Album List`,
-              callback_data: "view-album-list",
-            },
-          ],
+      ...Markup.inlineKeyboard([
+        [
+          Markup.button.callback(
+            `🎧  View Track List`,
+            `view-track-list#albumId=${id}`
+          ),
         ],
-      },
+        [
+          Markup.button.callback(
+            `💳  Buy for ${formatPrice(price)}`,
+            `request-invoice#albumId=${id}`
+          ),
+        ],
+        [Markup.button.callback(`⬅️  Back to Album List`, "view-album-list")],
+      ]),
     });
-  } catch (err) {}
+  } catch (err) {
+    await ctx.reply(content(ctx).error);
+  }
 };
 
 const viewTrackList = async (ctx: Context) => {
   try {
     // @ts-ignore
     const { data } = ctx.callbackQuery;
-    const albumId = data.split(":")[1];
+    const { albumId } = parseCallbackQueryData(data);
     // @ts-ignore
     const { tracks } = albums.find((a) => a.id === albumId);
 
-    const trackList = tracks.map(({ id: trackId, title }: Track) => [
-      { text: `🎧  ${title}`, callback_data: `view-track-info:${trackId}` },
-    ]);
+    const trackList = tracks.map(
+      ({ id: trackId, title }: Track, index: number) => [
+        Markup.button.callback(
+          `🎧  ${index + 1}. ${title}`,
+          `view-track-info#trackId=${trackId}`
+        ),
+      ]
+    );
+
+    const backButton = [
+      Markup.button.callback(
+        "⬅️ Back to Album",
+        `view-album-info#albumId=${albumId}`
+      ),
+    ];
 
     await ctx.deleteMessage();
 
-    await ctx.reply("🎸  Select a track", {
-      reply_markup: {
-        inline_keyboard: [
-          ...trackList,
-          [
-            {
-              text: "⬅️ Back to Album",
-              callback_data: `view-album-info:${albumId}`,
-            },
-          ],
-        ],
-      },
-    });
+    await ctx.reply(
+      "🎸  Select a track",
+      Markup.inlineKeyboard([...trackList, backButton])
+    );
   } catch (err) {
     await ctx.reply(content(ctx).error);
   }
@@ -111,7 +100,7 @@ const viewTackInfo = async (ctx: Context) => {
   try {
     // @ts-ignore
     const { data } = ctx.callbackQuery;
-    const trackId = data.split(":")[1];
+    const { trackId } = parseCallbackQueryData(data);
     console.log("track id", trackId);
 
     const file =
@@ -134,8 +123,8 @@ const requestInvoice = async (ctx: Context) => {
 export default Composer.compose([
   Composer.command("music", viewAlbumList),
   Composer.action("view-album-list", viewAlbumList),
-  Composer.action(/view-album-info:.+/, viewAlbumInfo),
-  Composer.action(/view-track-list:.+/, viewTrackList),
-  Composer.action(/view-track-info:.+/, viewTackInfo),
-  Composer.action(/request-invoice:.+/, requestInvoice),
+  Composer.action(/view-album-info#.+/, viewAlbumInfo),
+  Composer.action(/view-track-list#.+/, viewTrackList),
+  Composer.action(/view-track-info#.+/, viewTackInfo),
+  Composer.action(/request-invoice#.+/, requestInvoice),
 ]);
