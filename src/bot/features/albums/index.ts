@@ -3,13 +3,13 @@ import { viewAlbumList } from "./viewAlbumList";
 import { viewAlbumInfo } from "./viewAlbumInfo";
 import { viewTrackList } from "./viewTrackList";
 import { viewTackInfo } from "./viewTrackInfo";
-import { music } from "../props/commands";
+import { music } from "../../props/commands";
 import {
   viewAlbumListAction,
   viewAlbumInfoRegExp,
   viewTrackInfoRegExp,
   viewTrackListRegExp,
-} from "../props/actions";
+} from "../../props/actions";
 
 export default Composer.compose([
   Composer.command(music, viewAlbumList),

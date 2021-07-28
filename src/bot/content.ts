@@ -1,5 +1,5 @@
 import { BotCommand } from "telegraf/typings/core/types/typegram";
-import { menu } from "./features/props/commands";
+import { menu } from "./props/commands";
 
 const printMenu = (commands: BotCommand[]) =>
   commands

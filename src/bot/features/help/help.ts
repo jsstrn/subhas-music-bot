@@ -1,6 +1,6 @@
 import { Composer } from "telegraf";
-import { content } from "../content";
-import { help } from "./props/commands";
+import { content } from "../../content";
+import { help } from "../../props/commands";
 
 export default Composer.command(
   help,

@@ -1,10 +1,10 @@
 import { Composer } from "telegraf";
-import { start } from "./props/commands";
+import { start } from "../../props/commands";
 import pug from "pug";
 import path from "path";
 
-const fileName = 'start.pug'
-const filePath = path.join(__dirname, "..", "content", fileName);
+const fileName = "start.pug";
+const filePath = path.join(__dirname, fileName);
 const text = pug.compileFile(filePath);
 
 export default Composer.command(
