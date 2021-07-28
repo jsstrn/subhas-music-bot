@@ -4,5 +4,5 @@ import { help } from "./props/commands";
 
 export default Composer.command(
   help,
-  async (ctx) => await ctx.reply(content(ctx).help)
+  async (ctx) => await ctx.reply(content.help)
 );

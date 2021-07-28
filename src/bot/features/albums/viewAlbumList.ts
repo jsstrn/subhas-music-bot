@@ -18,6 +18,6 @@ export const viewAlbumList = async (ctx: Context): Promise<void> => {
       Markup.inlineKeyboard([...albumListButtons])
     );
   } catch (err) {
-    await ctx.reply(content(ctx).error);
+    await ctx.reply(content.error);
   }
 };

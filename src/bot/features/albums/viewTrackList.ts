@@ -35,6 +35,6 @@ export const viewTrackList = async (ctx: Context): Promise<void> => {
       Markup.inlineKeyboard([...viewTrackButtons, backToAlbumButton])
     );
   } catch (err) {
-    await ctx.reply(content(ctx).error);
+    await ctx.reply(content.error);
   }
 };

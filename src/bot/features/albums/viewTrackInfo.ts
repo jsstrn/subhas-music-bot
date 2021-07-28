@@ -14,6 +14,6 @@ export const viewTackInfo = async (ctx: Context): Promise<void> => {
 
     await ctx.replyWithAudio(file);
   } catch (err) {
-    await ctx.reply(content(ctx).error);
+    await ctx.reply(content.error);
   }
 };

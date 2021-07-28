@@ -44,6 +44,6 @@ export const viewAlbumInfo = async (ctx: Context): Promise<void> => {
       ]),
     });
   } catch (err) {
-    await ctx.reply(content(ctx).error);
+    await ctx.reply(content.error);
   }
 };
