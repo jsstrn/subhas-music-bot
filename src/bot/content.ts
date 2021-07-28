@@ -8,10 +8,8 @@ const printMenu = (commands: BotCommand[]) =>
 
 interface MessageContent {
   help: string;
-  error: string;
 }
 
 export const content: MessageContent = {
   help: `Available commands:\n\n${printMenu(menu)}`,
-  error: "Something went wrong. Please try again later.",
 };
