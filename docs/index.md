@@ -35,3 +35,9 @@ There's also a license field in `package.json` which uses identifiers listed in 
 ## TypeScript
 
 AWS Lambda supports Node 14 so we can set the TypeScript compiler options based on [Node Target Mapping](https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping).
+
+## Template engine
+
+Often times we want our bot to reply with formatted text (i.e. bold, italics, paragraphs, etc.) so that it's easier to read. There's also the issue of handling variables.
+
+One solution is to use a template engine to render HTML, but only a very small [subset of HTML tags are allowed](https://core.telegram.org/bots/api#html-style) on Telegram. This allows us to format our text for readability and plays nicely with variables.
