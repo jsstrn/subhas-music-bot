@@ -1,10 +1,22 @@
 import { Context } from "telegraf";
-import { content } from "../../content";
+import { Album } from "../../../models/Album";
+import { Invoice } from "../../../models/Invoice";
+import { parseCallbackQueryData } from "../../../util";
 
 export const requestInvoice = async (ctx: Context): Promise<void> => {
-  try {
-    await ctx.reply("🏗  Payment feature is under construction");
-  } catch (err) {
-    await ctx.reply(content.error);
-  }
+  // @ts-ignore
+  const data = parseCallbackQueryData(ctx.callbackQuery?.data as string);
+
+  const album = Album.getById(data.albumId as string);
+
+  const details = {
+    title: album.title,
+    description: `${album.description}`,
+    photo: album.cover,
+    items: [album],
+  };
+
+  const invoice = new Invoice(details).generate();
+
+  await ctx.replyWithInvoice(invoice);
 };
