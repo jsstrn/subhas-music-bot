@@ -1,5 +1,6 @@
 import { Context, Markup } from "telegraf";
 import { albums } from "../../../db/albums";
+import { Album } from "../../../models/Album";
 import { Track } from "../../../db/schema";
 import { parseCallbackQueryData } from "../../../util";
 
@@ -8,7 +9,7 @@ export const viewTrackList = async (ctx: Context): Promise<void> => {
   const { data } = ctx.callbackQuery;
   const { albumId } = parseCallbackQueryData(data);
   // @ts-ignore
-  const { tracks } = albums.find((a) => a.id === albumId);
+  const { tracks } = Album.getById(albumId);
 
   const viewTrackButtons = tracks.map(
     ({ id: trackId, title }: Track, index: number) => [

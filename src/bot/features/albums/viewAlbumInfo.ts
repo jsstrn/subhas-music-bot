@@ -1,5 +1,6 @@
 import { Context, Markup } from "telegraf";
 import { albums } from "../../../db/albums";
+import { Album } from "../../../models/Album";
 import { parseCallbackQueryData } from "../../../util";
 
 const formatPrice = (price: number): string => `$${(price / 100).toFixed(2)}`;
@@ -9,9 +10,7 @@ export const viewAlbumInfo = async (ctx: Context): Promise<void> => {
   const { data } = ctx.callbackQuery;
   const { albumId } = parseCallbackQueryData(data);
   // @ts-ignore
-  const { id, title, price, artist, cover } = albums.find(
-    (a) => a.id === albumId
-  );
+  const { id, title, price, artist, cover } = Album.getById(albumId);
 
   const viewTrackListButton = [
     Markup.button.callback(
