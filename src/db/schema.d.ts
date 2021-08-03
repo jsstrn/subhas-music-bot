@@ -2,15 +2,19 @@ export interface Artist {
   name: string;
 }
 
-type SourceType = "store" | "web";
-type Category = "preview" | "song" | "ringtone" | "zip";
-type MimeType = "application/zip" | "audio/mpeg" | "audio/mp4" | "audio/wav";
+export type Source = "store" | "web";
+export type Category = "preview" | "song" | "ringtone" | "zip";
+export type Mime =
+  | "application/zip"
+  | "audio/mpeg"
+  | "audio/mp4"
+  | "audio/wav";
 
-interface File {
+export interface File {
   id: string;
   name: string;
-  source: SourceType;
-  type: MimeType;
+  source: Source;
+  mime: Mime;
   category: Category;
 }
 
