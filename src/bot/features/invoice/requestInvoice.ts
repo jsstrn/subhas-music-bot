@@ -12,6 +12,7 @@ export const requestInvoice = async (ctx: Context): Promise<void> => {
   const details = {
     title: album.title,
     description: `${album.description}`,
+    payload: album.id,
     photo: album.cover,
     items: [album],
   };
