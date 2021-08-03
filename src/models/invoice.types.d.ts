@@ -1,6 +1,7 @@
 export interface InvoiceParameters {
   title: string;
   description: string;
+  payload: string;
   photo: string;
   items: Item[];
 }

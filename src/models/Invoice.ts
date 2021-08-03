@@ -26,12 +26,18 @@ export class Invoice {
 
   public items: Item[];
 
-  constructor({ title, description, photo, items = [] }: InvoiceParameters) {
+  constructor({
+    title,
+    description,
+    payload,
+    photo,
+    items = [],
+  }: InvoiceParameters) {
     this.id = uuid();
     this.title = title;
     this.description = description;
     this.photo = photo;
-    this.payload = this.id;
+    this.payload = payload;
 
     this.items = items;
 
