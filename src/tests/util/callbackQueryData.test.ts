@@ -2,6 +2,13 @@ import { parseCallbackQueryData, stringifyCallbackQueryData } from "../../util";
 
 describe("Callback Query Data", () => {
   describe("Stringify callback query data", () => {
+    it("returns stringified callback query data with no action", () => {
+      const action = "";
+      const data = { myId: "xyz789" };
+
+      expect(stringifyCallbackQueryData(action, data)).toBe("#myId=xyz789");
+    });
+
     it("returns stringified callback query data for one key/value pair", () => {
       const action = "some-callback-action";
       const data = { someId: "abc123" };
@@ -22,6 +29,12 @@ describe("Callback Query Data", () => {
   });
 
   describe("Parse callback query data", () => {
+    it("returns an object with correct id with no action", () => {
+      const data = "#myId=xyz789";
+
+      expect(parseCallbackQueryData(data)).toEqual({ myId: "xyz789" });
+    });
+
     it("returns an object with correct id", () => {
       const data = "some-callback-action#someId=abc123";
 
