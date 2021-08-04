@@ -16,7 +16,9 @@ export const albums: Album[] = [
       { role: "Tabla", name: "Sana Shajip Komar" },
       { role: "Flute", name: "Islam Robiul" },
       { role: "Additional Vocals", name: "JQ" },
-      { role: "Vocal Engineering, Mixing, Mastering", name: "FAUXE" },
+      { role: "Vocal Engineering", name: "FAUXE" },
+      { role: "Mixing", name: "FAUXE" },
+      { role: "Mastering", name: "FAUXE" },
     ],
     tracks: [
       {
