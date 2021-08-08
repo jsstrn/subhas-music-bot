@@ -1,10 +1,9 @@
 import { Telegraf, Telegram } from "telegraf";
 import { TELEGRAM_BOT_TOKEN } from "../constants";
+import { content } from "./content/index";
 import { menu } from "./props/commands";
 import features from "./features";
 import { log } from "../util";
-import pug from "pug";
-import path from "path";
 
 if (!TELEGRAM_BOT_TOKEN) {
   throw new Error("[ERROR] Telegram bot token is required.");
@@ -18,9 +17,7 @@ telegram.setMyCommands(menu);
 
 bot.use(features);
 
-const fileName = "error.pug";
-const filePath = path.join(__dirname, fileName);
-const text = pug.compileFile(filePath);
+const text = content("error.pug");
 
 bot.catch((err, ctx) => {
   log.error(err);
