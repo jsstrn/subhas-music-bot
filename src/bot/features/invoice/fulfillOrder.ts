@@ -1,6 +1,5 @@
 import { Context } from "telegraf";
 import { Album } from "../../../models/Album";
-import { filter, flattenDeep } from "lodash";
 import pug from "pug";
 import path from "path";
 
@@ -14,23 +13,25 @@ export const fulfillOrder = async (ctx: Context): Promise<void> => {
   const albumId = data.invoice_payload;
 
   const album = Album.getById(albumId);
+
   const { cover, title, artist, description, lyrics, credits, tracks } = album;
 
-  const filesArray = album.tracks.map((track) => {
-    return filter(track.files, { source: "web", category: "preview" });
+  const files = Album.getAllTrackFiles(albumId, {
+    source: "web",
+    category: "preview",
   });
 
-  const files = flattenDeep(filesArray);
+  const caption = text({
+    title,
+    artist,
+    description,
+    lyrics,
+    credits,
+    tracks,
+  });
 
   await ctx.replyWithPhoto(cover, {
-    caption: text({
-      title,
-      description,
-      lyrics,
-      credits,
-      tracks,
-      name: artist.name,
-    }),
+    caption,
     parse_mode: "HTML",
   });
 
