@@ -1,6 +1,6 @@
 import { Telegraf, Telegram } from "telegraf";
 import { TELEGRAM_BOT_TOKEN } from "../constants";
-import { content } from "./content/index";
+import { content } from "./content";
 import { menu } from "./props/commands";
 import features from "./features";
 import { log } from "../util";
@@ -17,9 +17,9 @@ telegram.setMyCommands(menu);
 
 bot.use(features);
 
-const text = content("error.pug");
+const text = content("error.pug")();
 
 bot.catch((err, ctx) => {
   log.error(err);
-  ctx.reply(text());
+  ctx.reply(text);
 });

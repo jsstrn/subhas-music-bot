@@ -1,13 +1,12 @@
 import { Composer } from "telegraf";
 import { about } from "../../props/commands";
-import pug from "pug";
-import path from "path";
+import { content } from "../../content";
 
-const fileName = "about.pug";
-const filePath = path.join(__dirname, fileName);
-const text = pug.compileFile(filePath);
+export default Composer.command(about, async (ctx) => {
+  const text = content("about.pug")({
+    name: ctx.from.first_name || "friend",
+    bot: ctx.botInfo,
+  });
 
-export default Composer.command(
-  about,
-  async (ctx) => await ctx.replyWithHTML(text({ name: ctx.from.first_name }))
-);
+  await ctx.replyWithHTML(text);
+});

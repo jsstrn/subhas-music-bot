@@ -1,11 +1,6 @@
 import { Context } from "telegraf";
 import { Album } from "../../../models/Album";
-import pug from "pug";
-import path from "path";
-
-const fileName = "album.pug";
-const filePath = path.join(__dirname, fileName);
-const text = pug.compileFile(filePath);
+import { content } from "../../content";
 
 export const fulfillOrder = async (ctx: Context): Promise<void> => {
   // @ts-ignore
@@ -21,7 +16,7 @@ export const fulfillOrder = async (ctx: Context): Promise<void> => {
     category: "preview",
   });
 
-  const caption = text({
+  const caption = content("album.pug")({
     title,
     artist,
     description,

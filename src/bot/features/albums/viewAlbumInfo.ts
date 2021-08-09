@@ -1,12 +1,7 @@
 import { Context, Markup } from "telegraf";
 import { Album } from "../../../models/Album";
 import { parseCallbackQueryData } from "../../../util";
-import pug from "pug";
-import path from "path";
-
-const fileName = "album.pug";
-const filePath = path.join(__dirname, fileName);
-const text = pug.compileFile(filePath);
+import { content } from "../../content";
 
 const formatPrice = (price: number): string => `$${(price / 100).toFixed(2)}`;
 
@@ -48,7 +43,7 @@ export const viewAlbumInfo = async (ctx: Context): Promise<void> => {
 
   await ctx.deleteMessage();
 
-  const caption = text({
+  const caption = content('album.pug')({
     title,
     artist,
     description,
