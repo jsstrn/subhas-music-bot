@@ -1,15 +1,11 @@
 import { Composer } from "telegraf";
 import { version } from "../../props/commands";
-import pug from "pug";
-import path from "path";
+import { content } from "../../content";
 
-const fileName = "version.pug";
-const filePath = path.join(__dirname, fileName);
-const text = pug.compileFile(filePath);
+export default Composer.command(version, async (ctx) => {
+  const text = content("version")({
+    version: process.env.npm_package_version,
+  });
 
-const v = process.env.npm_package_version;
-
-export default Composer.command(
-  version,
-  async (ctx) => await ctx.replyWithHTML(text({ version: v }))
-);
+  await ctx.replyWithHTML(text);
+});
