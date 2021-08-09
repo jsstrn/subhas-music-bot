@@ -16,7 +16,7 @@ export const fulfillOrder = async (ctx: Context): Promise<void> => {
     category: "preview",
   });
 
-  const caption = content("album.pug")({
+  const caption = content("album")({
     title,
     artist,
     description,

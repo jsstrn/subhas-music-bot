@@ -3,7 +3,7 @@ import { start } from "../../props/commands";
 import { content } from "../../content";
 
 export default Composer.command(start, async (ctx) => {
-  const text = content("start.pug")({
+  const text = content("start")({
     name: ctx.from.first_name,
   });
 

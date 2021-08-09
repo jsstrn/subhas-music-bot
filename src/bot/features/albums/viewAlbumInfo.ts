@@ -43,7 +43,7 @@ export const viewAlbumInfo = async (ctx: Context): Promise<void> => {
 
   await ctx.deleteMessage();
 
-  const caption = content('album.pug')({
+  const caption = content('album')({
     title,
     artist,
     description,

@@ -17,7 +17,7 @@ telegram.setMyCommands(menu);
 
 bot.use(features);
 
-const text = content("error.pug")();
+const text = content("error")();
 
 bot.catch((err, ctx) => {
   log.error(err);

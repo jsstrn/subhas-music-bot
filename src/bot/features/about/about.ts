@@ -3,7 +3,7 @@ import { about } from "../../props/commands";
 import { content } from "../../content";
 
 export default Composer.command(about, async (ctx) => {
-  const text = content("about.pug")({
+  const text = content("about")({
     name: ctx.from.first_name || "friend",
     bot: ctx.botInfo,
   });
