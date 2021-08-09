@@ -1,4 +1,5 @@
 import { Context } from "telegraf";
+import { File } from "../../../db/schema";
 import { Album } from "../../../models/Album";
 import { content } from "../../content";
 
@@ -30,7 +31,7 @@ export const fulfillOrder = async (ctx: Context): Promise<void> => {
     parse_mode: "HTML",
   });
 
-  files.forEach(async (file) => {
+  files.forEach(async (file: File) => {
     await ctx.replyWithAudio(file.id);
   });
 };
