@@ -41,3 +41,7 @@ AWS Lambda supports Node 14 so we can set the TypeScript compiler options based 
 Often times we want our bot to reply with formatted text (i.e. bold, italics, paragraphs, etc.) so that it's easier to read. There's also the issue of handling variables.
 
 One solution is to use a template engine to render HTML, but only a very small [subset of HTML tags are allowed](https://core.telegram.org/bots/api#html-style) on Telegram. This allows us to format our text for readability and plays nicely with variables.
+
+## Changelog
+
+A CHANGELOG contains all the notable changes to a project based on its releases. We typically follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html) for our releases. We can use the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format for our CHANGELOG file.
