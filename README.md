@@ -13,8 +13,14 @@ npm install
 Create an `.env` file and include the following environment variables
 
 ```sh
-FLAGSMITH_API_KEY=
-TELEGRAM_BOT_TOKEN=
+FLAGSMITH_API_KEY="YOUR FEATURE FLAG API KEY"
+
+TELEGRAM_BOT_TOKEN="YOUR TELEGRAM BOT TOKEN"
+
+S3_BUCKET_NAME="YOUR S3 BUCKET NAME"
+S3_REGION="YOUR S3 REGION"
+
+PROVIDER_TOKEN="YOUR PAYMENT PROVIDER TOKEN"
 ```
 
 Start the bot server locally
