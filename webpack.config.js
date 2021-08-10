@@ -15,7 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.(pug)$/,
-        loader: "file-loader",
+        type: 'asset/resource'
       },
       {
         test: /\.(tsx?)$/,
