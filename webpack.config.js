@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const path = require("path");
 const slsw = require("serverless-webpack");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   devtool: "eval-source-map",
@@ -13,10 +12,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.(pug)$/,
-        type: 'asset/resource'
-      },
       {
         test: /\.(tsx?)$/,
         loader: "ts-loader",
@@ -30,4 +25,13 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "src/bot/content/*.pug",
+        },
+      ],
+    }),
+  ],
 };
