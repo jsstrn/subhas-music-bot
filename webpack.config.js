@@ -14,6 +14,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(pug)$/,
+        loader: "file-loader",
+      },
+      {
         test: /\.(tsx?)$/,
         loader: "ts-loader",
         exclude: [
