@@ -31,3 +31,7 @@ plugins:
   - serverless-webpack
   - serverless-prune-plugin
   - serverless-offline
+
+custom:
+  webpack:
+    keepOutputDirectory: true
