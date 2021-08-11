@@ -29,8 +29,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: "src/bot/content/*.pug",
-          to: "src/functions/",
+          from: path.resolve(__dirname, "src/bot/content/**/*.pug"),
+          to: "src/functions/[name][ext]",
         },
       ],
     }),
