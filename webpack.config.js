@@ -30,6 +30,7 @@ module.exports = {
       patterns: [
         {
           from: "src/bot/content/*.pug",
+          to: "src/functions/",
         },
       ],
     }),
