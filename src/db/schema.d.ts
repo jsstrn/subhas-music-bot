@@ -3,12 +3,8 @@ export interface Artist {
 }
 
 export type Source = "store" | "web";
-export type Category = "preview" | "song" | "ringtone" | "zip";
-export type Mime =
-  | "application/zip"
-  | "audio/mpeg"
-  | "audio/mp4"
-  | "audio/wav";
+export type Category = "preview" | "song" | "ringtone" | "archive";
+export type Mime = "application/zip" | "audio/mpeg" | "audio/mp4" | "audio/wav";
 
 export interface File {
   id: string;

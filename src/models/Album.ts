@@ -21,7 +21,7 @@ class AlbumModel {
   }
 
   getAllTrackFiles(albumId: string, group: Partial<File>): File[] {
-    if (!this.album) {
+    if (!this.album || this.album?.id !== albumId) {
       this.getById(albumId);
     }
 
