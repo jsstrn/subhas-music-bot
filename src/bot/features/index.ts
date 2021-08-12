@@ -6,6 +6,7 @@ import version from "./version";
 import albums from "./albums";
 import error from "./error";
 import order from "./order";
+import support from "./support";
 
 export default Composer.compose([
   start,
@@ -14,5 +15,6 @@ export default Composer.compose([
   albums,
   error,
   order,
+  support,
   version,
 ]);
