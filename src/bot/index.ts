@@ -17,7 +17,9 @@ telegram.setMyCommands(menu);
 
 bot.use(features);
 
-const text = content("error")();
+bot.catch(async (err, ctx) => {
+  const text = content("error")();
+  await ctx.reply(text);
 
 bot.catch((err, ctx) => {
   log.error(err);
