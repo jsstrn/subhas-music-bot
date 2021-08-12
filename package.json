@@ -40,6 +40,7 @@
   "homepage": "https://github.com/jsstrn/subhas-music-bot#readme",
   "dependencies": {
     "flagsmith-nodejs": "^1.1.0",
+    "html-pdf": "^3.0.1",
     "lodash": "^4.17.21",
     "pug": "^3.0.2",
     "query-string": "^7.0.1",
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.77",
+    "@types/html-pdf": "^2.2.1",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.172",
     "@types/pug": "^2.0.5",

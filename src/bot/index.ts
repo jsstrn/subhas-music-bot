@@ -4,6 +4,7 @@ import { content } from "./content";
 import { menu } from "./props/commands";
 import features from "./features";
 import { log } from "../util";
+import { sendReceipt } from "./services";
 
 if (!TELEGRAM_BOT_TOKEN) {
   throw new Error("[ERROR] Telegram bot token is required.");
@@ -21,7 +22,9 @@ bot.catch(async (err, ctx) => {
   const text = content("error")();
   await ctx.reply(text);
 
-bot.catch((err, ctx) => {
   log.error(err);
-  ctx.reply(text);
+});
+
+bot.command("x", async (ctx) => {
+  await sendReceipt(ctx);
 });

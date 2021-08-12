@@ -8,7 +8,8 @@ coverage
 .build
 .webpack
 
-# package directories
+# directories
+tmp
 node_modules
 jspm_packages
 
