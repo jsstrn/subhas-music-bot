@@ -1,15 +1,13 @@
 import { Context, Markup } from "telegraf";
-import { albums } from "../../../db/albums";
 import { Album } from "../../../models/Album";
 import { Track } from "../../../db/schema";
 import { parseCallbackQueryData } from "../../../util";
+import { CallbackQuery } from "telegraf/typings/core/types/typegram";
 
 export const viewTrackList = async (ctx: Context): Promise<void> => {
-  // @ts-ignore
-  const { data } = ctx.callbackQuery;
+  const { data } = ctx.callbackQuery as CallbackQuery.DataCallbackQuery;
   const { albumId } = parseCallbackQueryData(data);
-  // @ts-ignore
-  const { tracks } = Album.getById(albumId);
+  const { tracks } = Album.getById(albumId as string);
 
   const viewTrackButtons = tracks.map(
     ({ id: trackId, title }: Track, index: number) => [

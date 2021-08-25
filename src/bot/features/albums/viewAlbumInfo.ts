@@ -1,4 +1,5 @@
 import { Context, Markup } from "telegraf";
+import { CallbackQuery } from "telegraf/typings/core/types/typegram";
 import { Album } from "../../../models/Album";
 import { parseCallbackQueryData } from "../../../util";
 import { content } from "../../content";
@@ -6,11 +7,9 @@ import { content } from "../../content";
 const formatPrice = (price: number): string => `$${(price / 100).toFixed(2)}`;
 
 export const viewAlbumInfo = async (ctx: Context): Promise<void> => {
-  // @ts-ignore
-  const { data } = ctx.callbackQuery;
+  const { data } = ctx.callbackQuery as CallbackQuery.DataCallbackQuery;
   const { albumId } = parseCallbackQueryData(data);
 
-  // @ts-ignore
   const {
     id,
     artist,
@@ -43,7 +42,7 @@ export const viewAlbumInfo = async (ctx: Context): Promise<void> => {
 
   await ctx.deleteMessage();
 
-  const caption = content('album')({
+  const caption = content("album")({
     title,
     artist,
     description,

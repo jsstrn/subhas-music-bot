@@ -1,13 +1,14 @@
 import { Context } from "telegraf";
+import { CallbackQuery } from "telegraf/typings/core/types/typegram";
 import { Album } from "../../../models/Album";
 import { Invoice } from "../../../models/Invoice";
 import { parseCallbackQueryData } from "../../../util";
 
 export const requestInvoice = async (ctx: Context): Promise<void> => {
-  // @ts-ignore
-  const data = parseCallbackQueryData(ctx.callbackQuery?.data as string);
+  const { data } = ctx.callbackQuery as CallbackQuery.DataCallbackQuery;
+  const { albumId } = parseCallbackQueryData(data);
 
-  const album = Album.getById(data.albumId as string);
+  const album = Album.getById(albumId as string);
 
   const details = {
     title: album.title,
